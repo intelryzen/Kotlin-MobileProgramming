@@ -23,3 +23,4 @@ rootProject.name = "b"
 include(":app")
 include(":bweek03a")
 include(":bweek03b")
+include(":bweek04a")
