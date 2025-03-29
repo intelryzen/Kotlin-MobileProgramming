@@ -31,7 +31,10 @@ fun ToDoList(toDoList: MutableList<Item>, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Row {
+                Row(
+                    modifier = Modifier
+                        .padding(vertical = 10.dp),
+                ) {
                     ToDoCheckBox(isChecked = item.status == ToDoStatus.COMPLETED) { status ->
                         toDoList[index] = item.copy(
                             status = if (status) {
