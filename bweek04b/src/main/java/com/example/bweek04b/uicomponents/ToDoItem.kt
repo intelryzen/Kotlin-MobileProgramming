@@ -15,12 +15,12 @@ import com.example.bweek04b.model.Item
 import com.example.bweek04b.model.ToDoStatus
 
 @Composable
-fun ToDoItem(item: com.example.bweek04b.model.Item, modifier: Modifier = Modifier) {
+fun ToDoItem(item: Item, modifier: Modifier = Modifier) {
     Column {
         Text(
             text = item.content,
             fontSize = 16.sp,
-            style = if (item.status == com.example.bweek04b.model.ToDoStatus.COMPLETED)
+            style = if (item.status == ToDoStatus.COMPLETED)
                 TextStyle(
                     textDecoration = TextDecoration.LineThrough
                 )

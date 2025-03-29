@@ -22,7 +22,10 @@ fun MainScreen(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxHeight()
     ) {
         ToDoListTitle()
-        ToDoSwitch(checked = checked.value, onCheckedChange = { value -> checked.value = value })
+        ToDoSwitch(
+            checked = checked.value,
+            onCheckedChange = { value -> checked.value = value },
+        )
         ToDoList(
             toDoList,
             showOnlyPending = checked.value,
