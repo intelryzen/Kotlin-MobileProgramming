@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun ToDoCheckBox(
     isChecked: Boolean,
     modifier: Modifier = Modifier,
-    onCheckedChange: (Boolean) -> Unit
+    onCheckedChange: ((Boolean) -> Unit)?
 ) {
     return Checkbox(
         checked = isChecked,
