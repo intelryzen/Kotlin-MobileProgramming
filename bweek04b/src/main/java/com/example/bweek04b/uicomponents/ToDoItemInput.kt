@@ -1,4 +1,4 @@
-package com.example.bweek04a.uicomponents
+package com.example.bweek04b.uicomponents
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,16 +12,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.bweek04a.model.Item
-import com.example.bweek04a.model.ToDoItemFactory
+import com.example.bweek04b.model.Item
+import com.example.bweek04b.model.ToDoItemFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 
 @Composable
 fun ToDoItemInput(toDoList: MutableList<Item>) {
     var textFieldState by remember { mutableStateOf("") }
     Row(modifier = Modifier.fillMaxWidth()) {
         TextField(
+            modifier = Modifier.weight(1f),
             value = textFieldState,
             onValueChange = {
                 textFieldState = it
