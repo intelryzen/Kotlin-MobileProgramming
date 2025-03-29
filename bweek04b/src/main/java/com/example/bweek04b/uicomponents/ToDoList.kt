@@ -21,7 +21,7 @@ import com.example.bweek04b.model.ToDoStatus
 fun ToDoList(toDoList: MutableList<Item>, modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
             .verticalScroll(scrollState)

@@ -1,6 +1,7 @@
 package com.example.bweek04b.uicomponents
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -10,15 +11,18 @@ import com.example.bweek04b.model.ToDoItemFactory
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
     val toDoList = remember {
-//        mutableStateListOf<Item>()
         ToDoItemFactory.makeToDoList()
     }
 
-    Column() {
+    Column(
+        modifier = modifier.fillMaxHeight()
+    ) {
         ToDoListTitle(
-            modifier = Modifier.weight(1f),
         )
-        ToDoList(toDoList)
+        ToDoList(
+            toDoList,
+            modifier = Modifier.weight(1f)
+        )
         ToDoItemInput(toDoList)
     }
 }
