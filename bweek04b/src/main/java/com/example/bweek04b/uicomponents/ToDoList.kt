@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
@@ -22,7 +23,11 @@ import com.example.bweek04b.model.ToDoItemFactory
 import com.example.bweek04b.model.ToDoStatus
 
 @Composable
-fun ToDoList(toDoList: MutableList<Item>, modifier: Modifier = Modifier) {
+fun ToDoList(
+    toDoList: MutableList<Item>,
+    showOnlyPending: Boolean,
+    modifier: Modifier = Modifier,
+) {
     val scrollState = rememberScrollState()
     Column(
         modifier = modifier
@@ -31,39 +36,45 @@ fun ToDoList(toDoList: MutableList<Item>, modifier: Modifier = Modifier) {
             .verticalScroll(scrollState)
     ) {
         toDoList.forEachIndexed { index, item ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .toggleable(
-                        value = item.status == ToDoStatus.COMPLETED,
-                        onValueChange = { status ->
-                            toDoList[index] = item.copy(
-                                status = if (status) {
-                                    ToDoStatus.COMPLETED
-                                } else {
-                                    ToDoStatus.PENDING
-                                }
-                            )
-                        },
-                        role = Role.Checkbox,
-                    )
-            ) {
-                Row(
+            val isCompleted = item.status == ToDoStatus.COMPLETED
+
+            if (showOnlyPending && isCompleted) {
+                Spacer(modifier = Modifier.size(0.dp))
+            } else {
+                Card(
                     modifier = Modifier
-                        .padding(vertical = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
+                        .fillMaxWidth()
+                        .toggleable(
+                            value = isCompleted,
+                            onValueChange = { status ->
+                                toDoList[index] = item.copy(
+                                    status = if (status) {
+                                        ToDoStatus.COMPLETED
+                                    } else {
+                                        ToDoStatus.PENDING
+                                    }
+                                )
+                            },
+                            role = Role.Checkbox,
+                        )
                 ) {
-                    Spacer(modifier = Modifier.width(16.dp))
-                    ToDoCheckBox(
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        isChecked = item.status == ToDoStatus.COMPLETED,
-                        onCheckedChange = null,
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    ToDoItem(item)
+                    Row(
+                        modifier = Modifier
+                            .padding(vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Spacer(modifier = Modifier.width(16.dp))
+                        ToDoCheckBox(
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                            isChecked = isCompleted,
+                            onCheckedChange = null,
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        ToDoItem(item)
+                    }
                 }
+                Spacer(modifier = Modifier.height(10.dp))
             }
-            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
@@ -71,5 +82,5 @@ fun ToDoList(toDoList: MutableList<Item>, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun ToDoListPreview() {
-    ToDoList(ToDoItemFactory.makeToDoList())
+    ToDoList(ToDoItemFactory.makeToDoList(), showOnlyPending = false)
 }
