@@ -9,7 +9,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun DollComponent(modifier: Modifier = Modifier) {
+fun DollComponent(
+    visibleElements: Map<Int, Boolean>,
+    modifier: Modifier = Modifier
+) {
     val images = listOf(
         R.drawable.arms,
         R.drawable.body,
@@ -26,11 +29,13 @@ fun DollComponent(modifier: Modifier = Modifier) {
 
     Box() {
         images.forEach { id ->
-            Image(
-                painter = painterResource(id = id),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-            )
+            if (visibleElements[id] == true) {
+                Image(
+                    painter = painterResource(id = id),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                )
+            }
         }
     }
 }
@@ -38,5 +43,18 @@ fun DollComponent(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun PreviewDollComponent() {
-    DollComponent()
+    val allVisible = mapOf(
+        R.drawable.arms to true,
+        R.drawable.body to true,
+        R.drawable.ears to true,
+        R.drawable.eyebrows to true,
+        R.drawable.eyes to true,
+        R.drawable.glasses to true,
+        R.drawable.hat to true,
+        R.drawable.mouth to true,
+        R.drawable.mustache to true,
+        R.drawable.nose to true,
+        R.drawable.shoes to true
+    )
+    DollComponent(visibleElements = allVisible)
 }
