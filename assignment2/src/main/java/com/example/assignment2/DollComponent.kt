@@ -2,6 +2,8 @@ package com.example.assignment2
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -27,14 +29,24 @@ fun DollComponent(
         R.drawable.shoes,
     )
 
-    Box() {
-        images.forEach { id ->
-            if (visibleElements[id] == true) {
-                Image(
-                    painter = painterResource(id = id),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                )
+//    val context = LocalContext.current
+//    context.resources.getIdentifier(
+//        "arms",
+//        "drawable",
+//        context.packageName
+//    )
+
+    Column {
+        Text("201811200 우승식")
+        Box() {
+            images.forEach { id ->
+                if (visibleElements[id] == true) {
+                    Image(
+                        painter = painterResource(id = id),
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                    )
+                }
             }
         }
     }
