@@ -22,6 +22,18 @@ object ImageListFactory {
             buttonType = ButtonType.ICON,
             likes = 50,
             dislikes = 10
+        ),
+        ImageData(
+            imageUri = ImageUri.ResImage(R.drawable.baseline_3g_mobiledata_24),
+            buttonType = ButtonType.ICON,
+            likes = 50,
+            dislikes = 10
+        ), ImageData(
+            imageUri = ImageUri.ResImage(R.drawable.baseline_3g_mobiledata_24),
+            buttonType = ButtonType.ICON,
+            likes = 50,
+            dislikes = 10
         )
+
     )
 }
