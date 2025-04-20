@@ -14,9 +14,10 @@ fun MainScreen(modifier: Modifier = Modifier) {
     navController.addOnDestinationChangedListener { _, _, _
         ->
         navController.currentBackStack.value.forEachIndexed { index, navBackStackEntry ->
-            Log.d("BackStack"
-                ,
-                "$index ${navBackStackEntry.destination.route}")
+            Log.d(
+                "BackStack",
+                "$index ${navBackStackEntry.destination.route}"
+            )
         }
     }
     NavGraph(navController = navController)

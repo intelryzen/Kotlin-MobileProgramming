@@ -28,8 +28,8 @@ fun NavGraph(
 
         composable(route = Routes.ScreenA.route) {
             Screen_A(
-                onNavigateA = {navController.navigate(Routes.ScreenC.route)},
-                onNavigateD = {navController.navigate(Routes.ScreenD.route)})
+                onNavigateA = { navController.navigate(Routes.ScreenC.route) },
+                onNavigateD = { navController.navigate(Routes.ScreenD.route) })
         }
 
         composable(route = Routes.ScreenB.route) {
@@ -37,11 +37,18 @@ fun NavGraph(
         }
 
         composable(route = Routes.ScreenC.route) {
-            Screen_C(onNavigate = {navController.navigate(Routes.Home.route)})
+            Screen_C(onNavigate = {
+                navController.navigate(Routes.Home.route) {
+                    popUpTo(Routes.Home.route) {
+                        inclusive = true
+                    }
+                    launchSingleTop = true
+                }
+            })
         }
 
         composable(route = Routes.ScreenD.route) {
-            Screen_D(onNavigate = {navController.navigate(Routes.ScreenC.route)})
+            Screen_D(onNavigate = { navController.navigate(Routes.ScreenC.route) })
         }
     }
 }

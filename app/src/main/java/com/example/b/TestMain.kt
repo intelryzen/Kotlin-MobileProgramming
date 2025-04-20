@@ -1,6 +1,112 @@
 package com.example.week02
 
 /**
+ * 타입명 프린트
+ */
+//fun main() {
+//    val result  = (1..100).toMutableList()
+//    print(result::class.simpleName)
+//}
+
+/**
+ * 난수 생성
+ */
+//fun main() {
+//    println(Random.nextInt())
+//    println(Random.nextBoolean())
+//
+//    val random = Random(12)
+//
+//    println(random.nextInt())
+//    println(random.nextInt())
+//}
+
+/**
+ * 콘솔 입력
+ */
+//fun main() {
+//    println("Enter a number:")
+//    val number = readlnOrNull()?.toIntOrNull() ?: 0
+//    println("The number is: $number")
+//}
+//fun main() {
+//    val reader = Scanner(
+//        System.`in`
+//    )
+//    print("Enter a number: ")
+//    var integer: Int = reader.nextInt()
+//    println("You entered: $integer")
+//}
+
+/**
+ * when
+ */
+//fun main(){
+//    val x = 20
+//    when(x){
+//        1 -> println("x==1")
+//        2,3 -> println("x==2 or x==3")
+//        in 4..7 -> println("4 ~ 7사이")
+//        !in 8..10 -> println("8 ~ 10사이가 아님")
+//        else ->{
+//            print("x는 8 ~ 10사이의 숫자임")
+//        }
+//    }
+//}
+
+
+/**
+ * for문
+ */
+//fun main() {
+//    for (i: Int in 1..10) {
+//        println(i);
+//    }
+//    println("--------")
+//    for (i: Int in 1..10 step 2) {
+//        println(i);
+//    }
+//    println("--------")
+//    for (i: Int in 10 downTo 1 step 2) {
+//        println(i);
+//    }
+//    println("--------")
+//    for (i: Int in 1 until 10) {
+//        println(i);
+//    }
+//}
+
+
+/**
+ * for문 2
+ */
+//fun main() {
+//    val list = arrayOf(1, 2, 3, 4, 5)
+//    for ((index, value) in list.withIndex()) {
+//        println("$index : $value")
+//    }
+//}
+
+
+/**
+ * while문
+ */
+//fun main() {
+//    test@ for(i in 1..3){
+//        var total2 = 2
+//        println("---")
+//        println(i)
+//        println("---")
+//        while(total2 > 0){
+//            println(total2)
+//            break@test
+//            total2--
+//        }
+//    }
+//
+//}
+
+/**
  * 함수 만들기
  */
 //fun add(a: Int, b: Int): Int {
