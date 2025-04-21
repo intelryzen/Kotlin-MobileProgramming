@@ -17,6 +17,7 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import kotlinx.parcelize.Parcelize
 
+// Parcelize 이용
 @Parcelize
 data class City(val name: String, val country: String) : Parcelable
 
@@ -28,6 +29,7 @@ fun CityScreen(modifier: Modifier = Modifier) {
     Text("${selectedCity.name} ${selectedCity.country}")
 }
 
+// saver 이용 (mapSaver, listSaver, Saver)
 data class City2(val name: String, val country: String) {
     companion object {
         val nameKey = "Name"
@@ -135,6 +137,7 @@ fun CityScreen6(modifier: Modifier = Modifier) {
         restore = { map ->
             val names = map["names"] as List<String>
             val countries = map["countries"] as List<String>
+            // 출력: [(Seoul, KR), (Busan, KR), (Incheon, KR)]
             names.zip(countries)
                 .map { (name, country) -> City2(name, country) }
                 .toMutableStateList()
