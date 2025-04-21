@@ -51,7 +51,7 @@ fun RandomColorButton2() {
     Column {
         Button(
             onClick = {
-               val job = scope.launch {
+                val job = scope.launch {
                     while (true) {
                         delay(500)
                         color = Color(
