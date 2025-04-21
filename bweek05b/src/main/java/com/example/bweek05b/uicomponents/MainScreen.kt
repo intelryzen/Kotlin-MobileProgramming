@@ -26,6 +26,12 @@ fun MainScreen(modifier: Modifier = Modifier, imageViewModel: ImageViewModel = v
     val orientation = LocalConfiguration.current.orientation
     val state = rememberLazyListState()
 
+//    val imgR = LocalContext.current.resources.getIdentifier(
+//        "image1",
+//        "drawable",
+//        LocalContext.current.packageName
+//    )
+
     if (orientation == Configuration.ORIENTATION_PORTRAIT) {
         ImageList(state, imageList = imageList)
     } else {

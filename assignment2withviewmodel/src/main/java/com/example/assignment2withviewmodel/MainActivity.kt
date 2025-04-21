@@ -1,33 +1,38 @@
-// 이미지withButton 스크롤 버튼 포함
-// Saver 와 viewModel
-// uiexamples 는 lazyColumns, scrollButton 예제
-
-package com.example.bweek05b
+package com.example.assignment2withviewmodel
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.bweek05b.ui.theme.BTheme
-import com.example.bweek05b.uicomponents.MainScreen
+import com.example.assignment2withviewmodel.ui.theme.BTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         setContent {
-            MainScreen()
-//            BTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            BTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    MainScreen(
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+                    MainScreenWithViewmodel(
+                        modifier = Modifier.padding(innerPadding)
+                    )
+
+
 //                    Greeting(
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
-//                }
-//            }
+                }
+            }
         }
     }
 }
