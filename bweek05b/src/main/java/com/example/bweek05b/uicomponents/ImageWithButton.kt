@@ -1,5 +1,6 @@
 package com.example.bweek05b.uicomponents
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -11,6 +12,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
 import com.example.bweek05b.model.ImageUri
 
 @Composable
@@ -33,7 +35,20 @@ fun ImageWithButton(
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            onState = { state ->
+                when (state) {
+                    is AsyncImagePainter.State.Success -> {
+                        Log.d("img", "Image Load Success")
+                    }
+
+                    is AsyncImagePainter.State.Error -> {
+                        Log.d("img", "${state.result.throwable.message}")
+                    }
+
+                    else -> {}
+                }
+            }
         )
         button()
     }
