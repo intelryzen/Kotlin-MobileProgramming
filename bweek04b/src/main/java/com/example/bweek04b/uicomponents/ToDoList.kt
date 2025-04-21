@@ -4,9 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
@@ -25,7 +23,7 @@ import com.example.bweek04b.model.ToDoStatus
 @Composable
 fun ToDoList(
     toDoList: MutableList<Item>,
-    showOnlyPending: Boolean,
+    isSwitchOn: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val scrollState = rememberScrollState()
@@ -38,12 +36,11 @@ fun ToDoList(
         toDoList.forEachIndexed { index, item ->
             val isCompleted = item.status == ToDoStatus.COMPLETED
 
-            if (showOnlyPending && isCompleted) {
-                Spacer(modifier = Modifier.size(0.dp))
-            } else {
+            if (!isSwitchOn || !isCompleted) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(vertical = 4.dp)
                         .toggleable(
                             value = isCompleted,
                             onValueChange = { status ->
@@ -73,7 +70,8 @@ fun ToDoList(
                         ToDoItem(item)
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
+                // .padding(vertical = 4.dp) 적용
+                // Spacer(modifier = Modifier.height(10.dp))
             }
         }
     }
@@ -82,5 +80,5 @@ fun ToDoList(
 @Preview
 @Composable
 private fun ToDoListPreview() {
-    ToDoList(ToDoItemFactory.makeToDoList(), showOnlyPending = false)
+    ToDoList(ToDoItemFactory.makeToDoList(), isSwitchOn = false)
 }

@@ -3,8 +3,10 @@ package com.example.bweek04b.uicomponents
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.bweek04b.model.ToDoItemFactory
@@ -14,7 +16,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
     val toDoList = remember {
         ToDoItemFactory.makeToDoList()
     }
-    val checked = remember {
+    var checked by remember {
         mutableStateOf(false)
     }
 
@@ -23,12 +25,12 @@ fun MainScreen(modifier: Modifier = Modifier) {
     ) {
         ToDoListTitle()
         ToDoSwitch(
-            checked = checked.value,
-            onCheckedChange = { value -> checked.value = value },
+            checked = checked,
+            onCheckedChange = { value -> checked = value },
         )
         ToDoList(
             toDoList,
-            showOnlyPending = checked.value,
+            isSwitchOn = checked,
             modifier = Modifier.weight(1f)
         )
         ToDoItemInput(toDoList)
