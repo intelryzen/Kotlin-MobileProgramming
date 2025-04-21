@@ -41,13 +41,14 @@ fun ToDoItemInput(toDoList: MutableList<Item>) {
         Button(
             modifier = Modifier.padding(horizontal = 10.dp),
             onClick = {
-            toDoList.add(
-                Item(
-                    textFieldState,
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
+                toDoList.add(
+                    Item(
+                        textFieldState,
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
+                    )
                 )
-            )
-        }) {
+                textFieldState = ""
+            }) {
             Text("추가")
         }
     }
