@@ -41,7 +41,7 @@ fun ImageList(
             modifier = modifier,
         ) {
             itemsIndexed(items = imageList) { index, item ->
-                getButton(index, item, imageList)
+                GetButton(index, item, imageList)
             }
         }
         AnimatedVisibility(visible = showButton) {
@@ -55,7 +55,7 @@ fun ImageList(
 }
 
 @Composable
-fun getButton(index: Int, item: ImageData, imageList: MutableList<ImageData>) {
+fun GetButton(index: Int, item: ImageData, imageList: MutableList<ImageData>) {
     when (item.buttonType) {
         ICON -> {
             ImageWithButton(

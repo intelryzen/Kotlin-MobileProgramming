@@ -19,7 +19,7 @@ import com.example.bweek05b.model.ImageUri
 fun ImageWithButton(
     image: ImageUri, modifier: Modifier = Modifier,
     button: @Composable () -> Unit
-) {
+) { 
     val img = when (image) {
         is ImageUri.ResImage -> image.resID
         is ImageUri.WebImage -> image.urlStr
