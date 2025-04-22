@@ -47,6 +47,9 @@
       <SelectionState runConfigName="assignment2withviewmodel">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="lastmidtest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>

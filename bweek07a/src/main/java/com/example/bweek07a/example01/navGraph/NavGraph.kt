@@ -28,7 +28,7 @@ fun NavGraph(
 
         composable(route = Routes.ScreenA.route) {
             Screen_A(
-                onNavigateA = { navController.navigate(Routes.ScreenC.route) },
+                onNavigateC = { navController.navigate(Routes.ScreenC.route) },
                 onNavigateD = { navController.navigate(Routes.ScreenD.route) })
         }
 
@@ -38,6 +38,11 @@ fun NavGraph(
 
         composable(route = Routes.ScreenC.route) {
             Screen_C(onNavigate = {
+                // Home.route 이동하기 전에 스택의 위에서부터
+                // 아래로 Home.route 전까지 다 Pop 함
+                // inclusive = true 옵션이 있으면 Home.route 도 pop
+                // launchSingleTop = true => Home.route가 이미 백스택 최상단에 있으면 새로 추가하지 않고, 기존 인스턴스를 재사용
+
                 navController.navigate(Routes.Home.route) {
                     popUpTo(Routes.Home.route) {
                         inclusive = true
