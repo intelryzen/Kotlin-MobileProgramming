@@ -1,12 +1,14 @@
 package com.example.bweek05b.uicomponents
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
@@ -41,7 +43,7 @@ private fun RasterImageExample2() {
 @Composable
 private fun VectorImageExample1() {
     Image(
-        painter = painterResource(id = R.drawable.baseline_3g_mobiledata_24),
+        painter = painterResource(id = R.drawable.image1),
         contentDescription = null
     )
 }
@@ -51,6 +53,11 @@ private fun VectorImageExample1() {
 private fun VectorImageExample2() {
     val vectorImage = ImageVector.vectorResource(id = R.drawable.baseline_3g_mobiledata_24)
     Image(
+        modifier = Modifier
+            .size(100.dp)
+            .clip(CircleShape)        // 클립을 먼저
+            .background(Color.Red),    // 클립된 원 안에만 배경 ,
+        contentScale = ContentScale.Crop,
         imageVector = vectorImage,
         contentDescription = null
     )
