@@ -80,6 +80,7 @@ fun PermissionButton2(
             },
             onConfirm = {
                 showRationaleDialog = false
+                showRationaleCheck = false
                 launcher.launch(permission)
             }
         )
