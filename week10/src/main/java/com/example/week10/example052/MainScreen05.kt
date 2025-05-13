@@ -1,4 +1,4 @@
-package com.example.week10.example05
+package com.example.week10.example052
 
 import android.Manifest
 import android.app.Activity
