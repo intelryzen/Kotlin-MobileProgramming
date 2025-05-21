@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
+import org.jsoup.parser.Parser
 
 class NewsViewModel : ViewModel() {
 
@@ -24,14 +25,29 @@ class NewsViewModel : ViewModel() {
         isLoading.value = true;
         viewModelScope.launch {
             try {
-                val fetchedNews = getNews()
-                _newsList.clear()
+//                val fetchedNews = getNews()
+                val fetchedNews = getJtbcNews()
+                _newsList.clear() 
                 _newsList.addAll(fetchedNews)
             } catch (e: Exception) {
                 Log.e("error", "fetch 관련 오류 발생", e)
             } finally {
                 _isLoading.value = false
             }
+        }
+    }
+
+    private suspend fun getJtbcNews(): List<NewsData> = withContext(Dispatchers.IO) {
+        val doc = Jsoup.connect("https://fs.jtbc.co.kr/RSS/culture.xml")
+            .parser(Parser.xmlParser()).get()
+
+        val headlines = doc.select("item")
+        headlines.mapNotNull { news ->
+            NewsData(
+                news.selectFirst("title")?.text().toString(),
+                news.selectFirst("link")?.text().toString(),
+
+                )
         }
     }
 
