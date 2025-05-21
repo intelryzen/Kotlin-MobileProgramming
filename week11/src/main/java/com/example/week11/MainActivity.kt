@@ -8,7 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.week11.example01.FetchDaumNews
+import com.example.week11.example012.FetchSongs
 import com.example.week11.ui.theme.BTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,8 +17,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BTheme {
-//                FetchSongs()
-                FetchDaumNews()
+                FetchSongs()
+//                FetchDaumNews()
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    Greeting(
 //                        name = "Android",
